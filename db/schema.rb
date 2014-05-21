@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140521062115) do
   create_table "topics", force: true do |t|
     t.string   "name"
     t.boolean  "public",      default: true
-    t.text     "descriptoin"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
