@@ -26,3 +26,5 @@ end
 gem 'faker'
 gem 'devise', '3.2.4'
 gem 'figaro'
+gem 'pundit'
+
