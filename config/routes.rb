@@ -7,7 +7,7 @@ Bloccit::Application.routes.draw do
 
   get 'topics/edit'
 
-  default_url_options host: 'localhost:3000'
+  #default_url_options host: 'localhost:3000'
   devise_for :users
   resources :topics do
     resources :posts, except: [:index]
