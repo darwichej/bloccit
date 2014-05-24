@@ -32,6 +32,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'rails_12factor'
+gem 'will_paginate', '~> 3.0.5'
 
 
 
