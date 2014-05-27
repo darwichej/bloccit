@@ -9,10 +9,26 @@
       </small>
     <p><%= markdown @post.body %></p>
   </div>
+  
   <div class="col-md-4">
+
+      <% form_for [@topic, @comments] do |f| %>
+        <%= f.error_messages %>
+        <%= f.hidden_field :post_id %>
+        <p>
+          <%= f.label :body %><br />
+          <%= f.text_field  :body %>
+        </p>
+        <p>
+          <%= f.submit "Post Comment" %>
+        </p>
+      <% end %>
+
+
     <% if policy(@post).edit? %>
       <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
     <% end %>
   </div>
+  <%= render :partial => 'comment', locals: {:comment => @post.comments.first} %>
 </div>
 

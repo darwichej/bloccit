@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   #end
 
   def edit
-    @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
     authorize @post
   end
 
@@ -19,13 +19,15 @@ class PostsController < ApplicationController
       redirect_to [@topic, @post]
     else
       flash[:error] = "There was an error saving the post. Please try again."
-      render :edit
+      render :new
     end
   end
 
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @topic = @post.topic
+    @comment = Comment.new(params[:comment])
   end
 
   def new
