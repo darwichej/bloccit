@@ -12,11 +12,11 @@
   
   <div class="col-md-4">
 
-      <% form_for [@topic, @comments] do |f| %>
-        <%= f.error_messages %>
+      <%= form_for [@topic, @comment] do |f| %>
+        
         <%= f.hidden_field :post_id %>
         <p>
-          <%= f.label :body %><br />
+          <%= f.label :comment %><br />
           <%= f.text_field  :body %>
         </p>
         <p>
@@ -29,6 +29,9 @@
       <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
     <% end %>
   </div>
-  <%= render :partial => 'comment', locals: {:comment => @post.comments.first} %>
+  <%= render :partial => 'comment', layout: 'form', collection: {:comment => @post.comments.first} %>
+  <h5>Comments:</h5>
+  <%= render partial: "comment", collection: @post.comments %>
 </div>
+
 

@@ -3,12 +3,14 @@ class CommentsController < ApplicationController
   #end
 
   def create
-    #@post = Post.find(params[:post_id])
-    @comment = Comment.new(params[:comment])
+    
+    @comment = current_user.comments.build(comment_params)
+    @post = @comment.post
+    @topic = @post.topic
 
     if @comment.save
       flash[:notice] = 'Comment was successfully created.'
-      redirect_to(@comment.post)
+      redirect_to([@topic, @post])
     else
       flash[:notice] = 'Error creating comment: #{@comment.errors}'
       redirect_to(@comment.post)
@@ -17,7 +19,7 @@ class CommentsController < ApplicationController
 
 
   def comment_params
-    params.require(:post).permit(:body, :post, :user)
+    params.require(:comment).permit(:comment, :post_id, :user)
   end
 end
 
