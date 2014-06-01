@@ -25,11 +25,10 @@ class PostsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:topic_id])
+    authorize @topic
     @post = Post.find(params[:id])
-  
-    @comment = Comment.new(:post_id => @post.id)
     @comments = @post.comments
-
+    @comment = Comment.new(:post_id => @post.id)
   end
 
   def new
