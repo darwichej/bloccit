@@ -1,5 +1,5 @@
 class AddRankToPosts < ActiveRecord::Migration
   def change
-    add_column :posts, :rank, :float, :avatar
+    add_column :posts, :rank, :float
   end
 end
