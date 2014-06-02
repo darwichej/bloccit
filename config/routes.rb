@@ -2,7 +2,7 @@ Bloccit::Application.routes.draw do
 
   #default_url_options host: 'localhost:3000'
   devise_for :users
-  resources :users, only: [:update]
+  resources :users, only: [:show, :update]
   
   resources :topics do
     resources :posts, except: [:index] do
