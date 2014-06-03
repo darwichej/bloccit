@@ -38,9 +38,9 @@
       <hr/>
 
       <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
-      
-        <h5>Comments:</h5>
+      <div class='js-comments'>
         <%= render partial: 'comments/comment', collection: @post.comments %>
+      </div>
       <br>
       </div>
       <div>

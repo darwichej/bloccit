@@ -5,14 +5,17 @@ class CommentsController < ApplicationController
     
     @comment = current_user.comments.build(comment_params)
     @post = @comment.post
+    @new_comment = Comment.new
     @topic = @post.topic
     authorize @comment
     if @comment.save
       flash[:notice] = 'Comment was successfully created.'
-      redirect_to([@topic, @post])
     else
       flash[:notice] = 'Error creating comment: #{@comment.errors}'
-      redirect_to(@comment.post)
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@topic, @post] }
     end
   end
 
@@ -34,6 +37,7 @@ class CommentsController < ApplicationController
     end
   end
 
+  private
 
   def comment_params
     params.require(:comment).permit(:comment, :body, :post_id, :user, :avatar)
