@@ -4,6 +4,7 @@ gem 'rails', '4.1.0'
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development do
@@ -12,7 +13,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'rspec'
+  gem 'rspec-support'
+  gem 'rspec-core'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 gem 'sass-rails', '~> 4.0.0'
@@ -36,7 +39,6 @@ gem 'redcarpet'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
-gem 'rails_12factor'
 gem 'will_paginate', '~> 3.0.5'
 
 
